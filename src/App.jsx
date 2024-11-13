@@ -307,7 +307,7 @@ function App() {
 
   const marketCap = data.supply * data.price
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 pb-8">
+    <div className="min-h-screen flex flex-col bg-degen-gradient">
       <div className="max-w-7xl mx-auto px-4 py-8">
         {/* Last Updated */}
         <div className="flex justify-end mb-4">
@@ -322,10 +322,11 @@ function App() {
             {data.error}
           </div>
         )}
-  
+
+       <div className = "flex-grow max-w-7x1 mx-auto px-4 py-8 w-full">
         {/* Welcome Section with Embeds */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-800 mb-8">
+          <h1 className="text-4xl font-bold text-degen mb-8">
             Welcome to DEGEN on Solana
           </h1>
   
@@ -344,7 +345,7 @@ function App() {
                 href="https://dexscreener.com/solana/9svudkgthqrzwbqpx6id4uqpbjcf6hxyfevqu9u7avwe"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-all shadow-md hover:shadow-lg"
+                className="bg-gradient-to-r from-degen to-degen-light text-white font-bold py-3 px-6 rounded-lg transition-all shadow-md hover:shadow-lg hover:opacity-90"
               >
                 Buy $DEGEN on SOL
               </a>
@@ -354,7 +355,7 @@ function App() {
   
         {/* Dashboard Header */}
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-blue-600 flex items-center justify-center gap-3">
+          <h1 className="text-4xl font-bold text-degen flex items-center justify-center gap-3">
             <span>DEGEN Token Dashboard</span>
             <span className="text-5xl" role="img" aria-label="top hat">🎩</span>
           </h1>
@@ -445,7 +446,7 @@ function App() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
           {/* Top Holders */}
           <div className="bg-white rounded-xl shadow-lg p-6">
-            <h2 className="text-xl font-bold text-gray-900 mb-4">Top Holders</h2>
+            <h2 className="text-xl font-bold text-gray-900 mb-4">Top Holders🐋</h2>
             <div className="space-y-3 max-h-[500px] overflow-y-auto">
               {data.holders.map((holder, index) => (
                 <div key={holder.address} className="flex justify-between items-center hover:bg-gray-50 p-2 rounded">
@@ -464,7 +465,7 @@ function App() {
           <div className="bg-white rounded-xl shadow-lg p-6">
             <h2 className="text-xl font-bold text-gray-900 mb-4">Recent Transfers 💸</h2>
             <div className="space-y-4">
-              {data.transfers.map((transfer) => (
+              {data.transfers.slice(0,5).map((transfer) => (
                 <div key={transfer.signature} className="border-b border-gray-100 pb-2">
                   <div className="grid grid-cols-2 gap-2">
                     <div>
@@ -497,39 +498,46 @@ function App() {
             </div>
           </div>
         </div>
-  
-        {/* Footer */}
-        <footer className="mt-8 pb-6 text-center border-t border-gray-200 pt-6">
-          <div className="flex flex-col items-center gap-2">
-            <p className="text-gray-600">
-              Built with ❤️ by{' '}
-              <a 
-                href="https://x.com/Naomi_fromhh" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-blue-600 hover:text-blue-800 font-medium"
-              >
-                Naomiii
-              </a>
-              {' & Claude'}
-            </p>
-            <p className="text-gray-600">
-              Powered by Tatum & Dexscreener API
-            </p>
-            <button 
-              onClick={() => {
-                navigator.clipboard.writeText('5zheWDh6fHpDdnNTdAG6wh4VStsnfLKGpiW4tmJvSLLj');
-                alert('Address copied to clipboard!');
-              }}
-              className="mt-2 bg-gradient-to-r from-blue-500 to-blue-600 text-white px-4 py-2 rounded-lg hover:from-blue-600 hover:to-blue-700 transition-all flex items-center gap-2 shadow-md"
-            >
-              <span>Buy me a coffee ☕</span>
-              <span className="text-xs opacity-75">(click to copy address)</span>
-            </button>
-          </div>
-        </footer>
+        </div>
       </div>
+      {/* Footer */}
+  <footer className="w-full bg-black text-white py-6 mt-auto">
+  <div className="max-w-7xl mx-auto px-4">
+    <div className="flex justify-between items-center">
+      {/* Left side - Powered by */}
+      <div className="text-gray-300">
+        Powered by Tatum & Dexscreener API
+      </div>
+
+      {/* Middle - Built with */}
+      <p className="text-gray-300">
+        Built with ❤️ and 🎩 by{' '}
+        <a 
+          href="https://x.com/Naomi_fromhh" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="text-degen-light hover:text-white font-medium transition-colors"
+        >
+          Naomiii
+        </a>
+        {' & Claude'}
+      </p>
+
+      {/* Right side - Coffee button */}
+      <button 
+        onClick={() => {
+          navigator.clipboard.writeText('5zheWDh6fHpDdnNTdAG6wh4VStsnfLKGpiW4tmJvSLLj');
+          alert('Address copied to clipboard!');
+        }}
+        className="bg-gradient-to-r from-degen to-degen-light text-white px-4 py-2 rounded-lg hover:opacity-90 transition-all flex items-center gap-2 shadow-md"
+      >
+        <span>Buy me a coffee ☕</span>
+        <span className="text-xs opacity-75">(click to copy address)</span>
+      </button>
     </div>
+  </div>
+  </footer>
+</div>
   );
 }
 
