@@ -1,6 +1,6 @@
 Gm, 
 
-This dashboard is built with Claude by someone who's coding skills are minimal. So excuse any weird code, it was crowd wisdom 😹
+This dashboard is built with Claude by someone whose coding skills are minimal. So excuse any weird code, it was crowd wisdom 😹
 
 It uses Dexscreener API for price data, and Tatum for the rest of onchain data. Tatum API gives you 1 million requests for free so not a bad deal. 
 
